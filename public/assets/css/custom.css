@@ -1,0 +1,52 @@
+body {
+    min-height: 2000px;
+    padding-top: 50px;
+    background-color: #EEEEEE;
+}
+
+#content {
+    background-color: #ffffff;
+    padding: 1% 0;
+}
+
+footer {
+    background-color: #EEE;
+    padding: 10px;
+}
+
+.margim-bottom {
+    margin-bottom: 1%;
+}
+
+#header-wrap {
+    background-color: #222222;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Pad the edges of the mobile views a bit */
+.marketing {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: normal;
+}
+.marketing h2 a {
+    color: #3f5aa7;
+}
+.marketing h2 a:hover {
+    text-decoration: none;
+    color: #088ccd;
+}
+.marketing .col-lg-4 p {
+    margin-right: 10px;
+    margin-left: 10px;
+}
