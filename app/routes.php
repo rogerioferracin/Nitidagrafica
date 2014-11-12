@@ -17,3 +17,12 @@ Route::get('/', function()
 });
 
 Route::controller('paginas', 'PaginaController');
+
+/**
+ * ROUTES ADMIN
+ */
+
+Route::get('/admin/', function()
+{
+    return View::make('/admin/home');
+});
