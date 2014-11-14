@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "guzzlehttp/guzzle": "~4.0",
-        "bogardo/mailgun": "3.0.*"
+        "bogardo/mailgun": "3.0.*",
+        "devhook/ckeditor": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'nitida',
+			'database'  => 'nitidagrafica',
 			'username'  => 'rogerio',
 			'password'  => '746663',
 			'charset'   => 'utf8',
