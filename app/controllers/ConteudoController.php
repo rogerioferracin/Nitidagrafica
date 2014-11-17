@@ -2,6 +2,10 @@
 
 class ConteudoController extends BaseController
 {
+    public function __construct()
+    {
+        $this->beforeFilter('csrf', ['on' => ['post', 'put', 'patch', 'delete']]);
+    }
 
     /**
      * Página com lista dos conteudos
@@ -12,6 +16,63 @@ class ConteudoController extends BaseController
 
         return View::make('admin.conteudo.index', compact('conteudos'))
             ->with('title', 'Conteudos cadastrados');
+    }
+
+    /**
+     * Redireciona para pagina de atualização de conteudo
+     */
+    public function getAtualiza($id)
+    {
+        $conteudo = Conteudo::find($id);
+        $categorias = DB::table('categorias')->orderBy('nome', 'asc')->lists('nome', 'id');
+
+        if(!$conteudo) {
+            return Redirect::to('admin.conteudo')
+                ->with('message', 'Conteúdo não encontrado ou inexistente. Tente novamente');
+        }
+
+        return View::make('admin.conteudo.atualiza')
+            ->with('title', 'Atualiza conteúdo')
+            ->with('conteudo', $conteudo)
+            ->with('categorias', $categorias);
+    }
+
+    /**
+     * Atualiza conteudo do site
+     */
+    public function putAtualiza($id)
+    {
+        $rules = Conteudo::$rules;
+        $rules['apelido'] = str_replace('{ignore_id}', $id, $rules['apelido']);
+        $validator = Validator::make(Input::all(), $rules);
+
+        if($validator->fails()) {
+            return Redirect::back()
+                ->with('message', 'Ocorreu um erro ao validar o formulário')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $conteudo = Conteudo::find($id);
+        if(!$conteudo) {
+            return Redirect::to('/admin/conteudo')
+                ->with('message', 'Conteúdo não encontrado ou inexistente. Tente Novamente.');
+        }
+        $conteudo->apelido = Input::get('apelido');
+        $conteudo->titulo = Input::get('titulo');
+        $conteudo->texto = Input::get('texto');
+        $conteudo->categoria_id = Input::get('categoria_id');
+
+        if(count($conteudo->getDirty()) > 0) {
+            $conteudo->save();
+            return Redirect::to('/admin/conteudo')
+                ->with('message', 'Conteudo <b>' . $conteudo->titulo . '</b> atualizado com sucesso!');
+        } else {
+            return Redirect::to('/admin/conteudo')
+                ->with('message', 'Conteudo <b>' . $conteudo->titulo . '</b> não sofreu alterações!');
+        }
+
+
     }
 
     /**
@@ -46,7 +107,7 @@ class ConteudoController extends BaseController
         }
 
         $conteudo = new Conteudo();
-        $conteudo->menu_link = Input::get('menu_link');
+        $conteudo->apelido = Input::get('apelido');
         $conteudo->titulo = Input::get('titulo');
         $conteudo->texto = Input::get('texto');
         $conteudo->categoria_id = Input::get('categoria_id');

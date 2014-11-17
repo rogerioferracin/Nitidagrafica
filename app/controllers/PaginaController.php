@@ -1,12 +1,13 @@
 <?php
 class PaginaController extends BaseController
 {
-    public function getSobre()
+    public function getConteudo($apelido)
     {
-        $conteudo = Pagina::where('link', '=', 'sobre')->firstOrFail();
+        $conteudo = Conteudo::where('apelido', '=', $apelido)->firstOrFail();
 
-        return View::make('/paginas/sobre')
-            ->with('conteudo', $conteudo);
+        return View::make('/paginas/conteudo')
+            ->with('conteudo', $conteudo)
+            ->with('title', 'Sobre a gráfica');
     }
 
     /**
@@ -71,6 +72,7 @@ class PaginaController extends BaseController
 
     public function getDicas()
     {
-        return View::make('paginas.dicas');
+        return View::make('paginas.dicas')
+            ->with('title', 'Dicas para uma boa impressão');
     }
 }

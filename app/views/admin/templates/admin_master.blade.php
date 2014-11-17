@@ -50,6 +50,9 @@
 {{ HTML::script('/assets/dist/js/jquery-1.11.1.min.js') }}
 {{ HTML::script('/assets/dist/js/bootstrap.min.js') }}
 {{ HTML::script('/assets/js/jquery.cookie.js') }}
+{{ HTML::script('/assets/ckeditor/ckeditor.js') }}
+
+@yield('script')
 
 <script>
     $(document).ready(function(){
@@ -60,10 +63,8 @@
         });
 
         var activeMenu = $.cookie('activeMenuItem');
-        console.log(activeMenu);
 
         var last = $.cookie('activeAccordionGroup');
-        console.log(last);
         if(last!=null) {
             //remove default collapse setting
             $('#side-menu .collapse').removeClass('in');
@@ -74,7 +75,6 @@
         $('#side-menu').bind('shown.bs.collapse', function(){
             var active = $('#side-menu in').attr('id');
             $.cookie('activeAccordionGroup', active);
-            console.log(active);
         });
     });
 </script>

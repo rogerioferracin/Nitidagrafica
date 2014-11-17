@@ -11,6 +11,7 @@
                         <tr>
                             <th>Id:</th>
                             <th>Titulo:</th>
+                            <th>Apelido:</th>
                             <th>Categoria:</th>
                         </tr>
                     </thead>
@@ -18,7 +19,8 @@
                         @foreach($conteudos as $conteudo)
                             <tr>
                                 <td>{{ $conteudo->id }}</td>
-                                <td><a href="{{ URL::to('/admin/categoria/atualiza', ['id'=>$conteudo->id]) }}">{{ $conteudo->titulo }}</a></td>
+                                <td><a href="{{ URL::to('/admin/conteudo/atualiza', ['id'=>$conteudo->id]) }}">{{ $conteudo->titulo }}</a></td>
+                                <td><a href="{{ URL::to('/admin/conteudo/atualiza', ['id'=>$conteudo->id]) }}">{{ $conteudo->alias }}</a></td>
                                 <td>{{ $conteudo->categoria->nome }}</td>
                             </tr>
                         @endforeach

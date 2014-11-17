@@ -9,7 +9,7 @@
                     @include('template.errorPanel')
                 </div>
 
-                {{ Form::model($categoria, ['url'=>'/admin/categoria/nova']) }}
+                {{ Form::model($categoria, array('url'=>array('/admin/categoria/atualiza', $categoria->id), 'method'=>'put')) }}
                     <div class="row">
                         <div class="form-group col-lg-12">
                             {{ Form::label('nome', 'Nome:', ['class'=>'control-label']) }}

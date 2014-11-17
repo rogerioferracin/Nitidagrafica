@@ -16,6 +16,7 @@ class CreateCategoriasTable extends Migration {
             $table->increments('id');
             $table->string('nome', 40)->unique();
             $table->string('descricao');
+            $table->boolean('ativa')->default(1);
             $table->timestamps();
         });
 	}

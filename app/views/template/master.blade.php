@@ -2,7 +2,7 @@
 <html>
 <head lang="pt-br">
     <meta charset="UTF-8">
-    <title>Nítida Gráfica</title>
+    <title>Nítida Gráfica -  {{{ $title or  'Web site'}}}</title>
 
     <link rel="shortcut icon" href="{{ URL::to('/assets/images/favicon.ico') }}" >
 
@@ -26,7 +26,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ URL::to('/') }}">Home</a></li>
-                    <li><a href="{{ URL::to('/paginas', ['link'=>'sobre']) }}">Sobre a gráfica</a></li>
+                    <li><a href="{{ URL::to('/paginas/conteudo', ['link'=>'sobre-a-grafica']) }}">Sobre a gráfica</a></li>
                     <li><a href="{{ URL::to('/paginas/orcamento') }}">Orçamento</a></li>
                     <li><a href="{{ URL::to('/paginas/arquivos') }}">Envio de arquivo</a></li>
                     <li><a href="{{ URL::to('/paginas/dicas') }}">Dicas para boa impressão</a></li>

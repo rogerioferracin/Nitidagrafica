@@ -8,11 +8,11 @@ class Conteudo extends Eloquent
         return $this->belongsTo('Categoria', 'categoria_id');
     }
 
-    protected $fillable = array('menu_link', 'titulo', 'texto', 'categoria_id');
+    protected $fillable = array('apelido', 'titulo', 'texto', 'categoria_id');
 
     public static $rules = array(
-        'menu_link' => 'required|max:20',
-        'titulo' => 'required|max:40',
+        'apelido' => 'required|max:40|unique:conteudos,apelido,{ignore_id}',
+        'titulo' => 'required|max:80',
         'texto' => 'required',
         'categoria_id' => 'required'
     );
